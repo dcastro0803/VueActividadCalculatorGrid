@@ -1,0 +1,161 @@
+<head>
+	<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+	<!-- CSS only -->
+	<link
+		rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+		crossorigin="anonymous"
+	/>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<!-- -->
+<div id="app">
+	<nav class="navbar navbar-light bg-light">
+		<div :class="row" id="navbarTogglerDemo01">
+			<a class="navbar-brand" href="./index.html">Daniel</a>
+      <a class="navbar-brand" href="./index.html">Home</a>
+      <a class="navbar-brand nav-item" href="./services.html">Services</a>
+      <a class="navbar-brand nav-item" href="./grid.html">Projects</a>
+      <a class="navbar-brand nav-item" href="./contact.html">Contact</a>
+		</div>
+	</nav>
+
+	
+	<div class="container-sm">
+		<button @click="fetchData()">Change Values and place list or grid view</button>
+		<div :class="row">
+			<div class="col-sm">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" v-bind:src="image" />
+					<div class="card-body">
+						<h5 class="card-title">Puppy #1</h5>
+						<p class="card-text">
+							Check info of puppy
+						</p>
+						<a
+							href="https://www.websitehostingrating.com/cybersecurity-statistics-facts/"
+							class="btn btn-primary"
+							>Visit Website for more facts</a
+						>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div v-if="toggle1" >
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" v-bind:src="image2" />
+						<div class="card-body">
+							<h5 class="card-title">Puppy #2</h5>
+							<p class="card-text">
+								Check info of puppy
+							</p>
+							<a
+								href="https://www.csoonline.com/article/3153707/top-cybersecurity-facts-figures-and-statistics.html"
+								class="btn btn-primary"
+								>Visit Website for more facts
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div v-if="toggle1" >
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" v-bind:src="image3" />
+						<div class="card-body">
+							<h5 class="card-title">Puppy #3</h5>
+							<p class="card-text">
+								Check info of puppy
+							</p>
+							<a
+								href="https://www.csoonline.com/article/3153707/top-cybersecurity-facts-figures-and-statistics.html"
+								class="btn btn-primary"
+								>Visit Website for more facts
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div v-if="toggle1" >
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" v-bind:src="image4" />
+						<div class="card-body">
+							<h5 class="card-title">Puppy #4</h5>
+							<p class="card-text">
+								Check info of puppy
+							</p>
+							<a
+								href="https://www.csoonline.com/article/3153707/top-cybersecurity-facts-figures-and-statistics.html"
+								class="btn btn-primary"
+								>Visit Website for more facts
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			title: "Check the puppies :)",
+			message: "Hello Vue!",
+			info: "Nothing",
+			image:
+				"https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_640.jpg",
+			image2:
+				"https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_640.jpg",
+				image3:
+				"https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_640.jpg",
+				image4:
+				"https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_640.jpg",
+			toggle1: true,
+			row:{row:true}
+		},
+		methods: {
+			randomBetween: function (from, to) {
+				return Math.floor(Math.random() * to) + from;
+			},
+			fetchData: function () {
+				this.row["row"] = !this.row["row"] 
+				fetch(" https://dog.ceo/api/breeds/image/random")
+					.then((res) => res.json())
+					.then((myJson) => {
+						console.log(myJson);
+						console.log(this.image);
+						this.image = myJson.message;
+						//this.users = myJson
+					});
+				fetch(" https://dog.ceo/api/breeds/image/random")
+					.then((res) => res.json())
+					.then((myJson) => {
+						console.log(myJson);
+						console.log(this.image);
+						this.image2 = myJson.message;
+						//this.users = myJson
+					});
+				fetch(" https://dog.ceo/api/breeds/image/random")
+					.then((res) => res.json())
+					.then((myJson) => {
+						console.log(myJson);
+						console.log(this.image);
+						this.image3 = myJson.message;
+						//this.users = myJson
+					});
+				fetch(" https://dog.ceo/api/breeds/image/random")
+					.then((res) => res.json())
+					.then((myJson) => {
+						console.log(myJson);
+						console.log(this.image);
+						this.image4 = myJson.message;
+						//this.users = myJson
+					});
+			},
+		},
+	});
+</script>
